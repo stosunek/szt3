@@ -18,7 +18,7 @@ public class Field extends JPanel implements ActionListener{
     //setFocusable(true);
 
     //TODO START
-    Timer timer = new Timer(40, this);
+    Timer timer = new Timer(30, this);
     timer.start();
   }
 
@@ -28,15 +28,13 @@ public class Field extends JPanel implements ActionListener{
     player.nextPixel();
   }
 
-  @Override
-  public void paint(Graphics g) {
-    super.paint(g);
-
-    g.drawLine(player.x(), player.y(), player.x(), player.y()); 
+  public void paintCurves(Graphics g) {
+    g.setColor(Color.white); //TODO for all curves
+    g.fillRect(player.x(), player.y(), 2, 2); //TODO optimal width
   }
 
   public void actionPerformed(ActionEvent e) {
     this.move();
-    repaint(); //FIXME
+    this.paintCurves(this.getGraphics()); //FIXME make it faster http://stackoverflow.com/questions/12824929/java-drawing-program-slows-after-several-polygons-drawn
   }
 }
