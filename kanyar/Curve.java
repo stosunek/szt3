@@ -8,8 +8,8 @@ public class Curve{
   private boolean life;
 
   public Curve(){
-    x = 100;
-    y = 100;
+    x = 200;
+    y = 200;
     angle = 1;
   }
 
@@ -29,7 +29,7 @@ public class Curve{
   {
     x += Math.cos(angle);
     y += Math.sin(angle);
-    angle += 0.07; //TODO
+    angle += 0.015; //TODO
   }
 
 }
