@@ -1,6 +1,8 @@
 package kanyar;
 
+
 import java.lang.Math;
+import java.util.Random;
 
 public class Curve{
 
@@ -10,13 +12,36 @@ public class Curve{
   private float turn;
   private float turning_sensibility;
   private boolean life;
+  private Random random;
+
+  public enum Player
+  {
+    RACE, CONTROL, COLOR
+  }
+
+  public enum CurveRace
+  {
+    HUMAN, CPU
+  }
+
+  public enum CurveControl
+  {
+    LEFT, ONE, N
+  }
+
+  public enum CurveColor
+  {
+    WHITE, RED, BLUE
+  }
 
   public Curve(){
-    x = 200;
-    y = 200;
-    angle = 1;
+    random = new Random();
+    x = 100 + random.nextInt(600);
+    y = 100 + random.nextInt(400);
+    angle = (float)Math.random();
     turn = 0f;
     turning_sensibility = 0.02f;
+    life = true;
   }
 
   public boolean lives(){
@@ -62,5 +87,10 @@ public class Curve{
     {
       turn = 0f;
     }
+  }
+
+  public void die()
+  {
+    life = false;
   }
 }
