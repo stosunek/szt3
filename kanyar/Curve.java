@@ -14,31 +14,11 @@ public class Curve{
   private boolean life;
   private Random random;
 
-  public enum Player
-  {
-    RACE, CONTROL, COLOR
-  }
-
-  public enum CurveRace
-  {
-    HUMAN, CPU
-  }
-
-  public enum CurveControl
-  {
-    LEFT, ONE, N
-  }
-
-  public enum CurveColor
-  {
-    WHITE, RED, BLUE
-  }
-
   public Curve(){
     random = new Random();
     x = 100 + random.nextInt(600);
     y = 100 + random.nextInt(400);
-    angle = (float)Math.random();
+    angle = (float)Math.random()*6.283f; //from zero (straight right) to 2*pi (pi is straight left)
     turn = 0f;
     turning_sensibility = 0.02f;
     life = true;
@@ -54,6 +34,10 @@ public class Curve{
 
   public int y(){
     return Math.round(y);
+  }
+
+  public float angle(){
+    return angle; //angle mod 2*pi
   }
 
   public void nextPixel()
@@ -87,6 +71,11 @@ public class Curve{
     {
       turn = 0f;
     }
+  }
+
+  public void turnForward()
+  {
+    turn = 0f;
   }
 
   public void die()

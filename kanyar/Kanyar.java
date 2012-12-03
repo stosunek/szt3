@@ -25,7 +25,7 @@ public class Kanyar extends JFrame{
 
   public enum CurveControl
   {
-    LEFT, ONE, N
+    LEFT, ONE, N, NONE
   }
 
   public enum CurveColor
@@ -49,11 +49,11 @@ public class Kanyar extends JFrame{
     players[0][Player.RACE.ordinal()]    = CurveRace.HUMAN.ordinal();
     players[0][Player.CONTROL.ordinal()] = CurveControl.LEFT.ordinal();
     players[0][Player.COLOR.ordinal()]   = CurveColor.WHITE.ordinal();
-    players[1][Player.RACE.ordinal()]    = CurveRace.HUMAN.ordinal();
-    players[1][Player.CONTROL.ordinal()] = CurveControl.ONE.ordinal();
+    players[1][Player.RACE.ordinal()]    = CurveRace.CPU.ordinal();
+    players[1][Player.CONTROL.ordinal()] = CurveControl.NONE.ordinal();//CurveControl.ONE.ordinal();
     players[1][Player.COLOR.ordinal()]   = CurveColor.RED.ordinal();
-    players[2][Player.RACE.ordinal()]    = CurveRace.HUMAN.ordinal();
-    players[2][Player.CONTROL.ordinal()] = CurveControl.N.ordinal();
+    players[2][Player.RACE.ordinal()]    = CurveRace.CPU.ordinal();
+    players[2][Player.CONTROL.ordinal()] = CurveControl.NONE.ordinal(); //CurveControl.N.ordinal();
     players[2][Player.COLOR.ordinal()]   = CurveColor.BLUE.ordinal();
     this.setContentPane(new Field(players));
     this.setVisible(true);

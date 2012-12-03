@@ -8,7 +8,7 @@ Usage
 
   Compile:
 
-    javac kanyar/Field.java ; javac kanyar/Kanyar.java ; javac kanyar/Curve.java
+    javac kanyar/Field.java ; javac kanyar/Kanyar.java ; javac kanyar/Curve.java ; javac kanyar/AI.java
 
   Run:
 
