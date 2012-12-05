@@ -8,6 +8,8 @@ public class AI{
   private Curve c;
   private static final int XX = 800;
   private static final int YY = 600;
+  private int turning = 0;
+  private int turnbuffer = 0;
 
   public AI(Curve curve)
   {
@@ -18,21 +20,39 @@ public class AI{
   {
     if(this.countForwardBlocks(b, c.angle()) > 0)
     {
-      int left = this.firstBlock(b, (c.angle()-0.02f));
-      int right = this.firstBlock(b, (c.angle()+0.02f));
-      if(left < right) //If there are more blocks on left
+      if(turning == 1 && turnbuffer < 3)
       {
+        turnbuffer++;
         c.turnRight();
+      }
+      else if (turning == 2 && turnbuffer < 3)
+      {
+        turnbuffer++;
+        c.turnLeft();
       }
       else
       {
-        c.turnLeft();
+        turnbuffer = 0;
+        int left = this.firstBlock(b, (c.angle()-0.2f));
+        int right = this.firstBlock(b, (c.angle()+0.2f));
+        if(left < right) //If there are closer blocks on left
+        {
+          turning = 1;
+          c.turnRight();
+        }
+        else
+        {
+          turning = 2;
+          c.turnLeft();
+        }
       }
     }
     else
     {
-      int right = this.countForwardBlocks(b, (c.angle()+0.2f));
-      int left = this.countForwardBlocks(b, (c.angle()-0.2f));
+      turning = 0;
+      turnbuffer = 0;
+      /*int right = this.countForwardBlocks(b, (c.angle()+1f)) + this.countForwardBlocks(b, (c.angle()+0.02f));
+      int left = this.countForwardBlocks(b, (c.angle()-1f)) + this.countForwardBlocks(b, (c.angle()-0.02f));
       if(left == 0 && right > 0)
       {
         c.turnLeft();
@@ -44,7 +64,19 @@ public class AI{
       else
       {
         c.turnForward();
-      }
+      }*/
+        int left = this.firstBlock(b, (c.angle()-1f));
+        int right = this.firstBlock(b, (c.angle()+1f));
+        if(left < right) //If there are closer blocks on left
+        {
+          turning = 1;
+          c.turnRight();
+        }
+        else
+        {
+          turning = 2;
+          c.turnLeft();
+        }
     }
   }
 
